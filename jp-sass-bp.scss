@@ -1,0 +1,46 @@
+/*------------------------------------------------------------------*\
+    MIXINS
+\*------------------------------------------------------------------*/
+@mixin clearfix() {
+  &:before,
+  &:after {
+    content: " "; // 1
+    display: table; // 2
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin transition() {
+  transition: all 0.3s ease-in-out;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+/*** Make a Square ***/
+@mixin square($size) {
+  @include size($size, $size);
+}
+
+/*** Padding for Sections ***/
+@mixin section-spacing($section-padding) {
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+}
+
+/*** Padding for Headers ***/
+@mixin section-header($section-padding) {
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+}
+
+/*** Opacity with Fallback ***/
+@mixin background-opacity($color, $opacity-number) {
+  $opacity : $opacity-number;
+  background: $color; /* The Fallback */
+  background: rgba($color, $opacity);
+}
